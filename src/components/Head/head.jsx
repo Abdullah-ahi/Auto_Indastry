@@ -8,6 +8,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 export class Head extends Component {
 
   render(){
+    const { Login } = this.props
     return(
       <div>
         <AppBar position="static" className="MY CLASS">
@@ -20,9 +21,14 @@ export class Head extends Component {
                 <Button className="nav-link-btn" variant="outlined">News</Button>
               </Link>
             </div>
+            {Login.login ? 
+            <Link to='/profile' className="log-in-link">
+              <Button className="log-in-link-btn" variant="outlined" color="inherit">Profile</Button>
+            </Link> :
             <Link to='/login' className="log-in-link">
               <Button className="log-in-link-btn" variant="outlined" color="inherit">LOG IN</Button>
             </Link>
+            }
           </Toolbar>
         </AppBar>
       </div>

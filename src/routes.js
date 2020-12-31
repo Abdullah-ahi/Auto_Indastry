@@ -1,6 +1,7 @@
 import { BaseRedux } from 'containers/BaseContainer';
 import { loginRedux } from 'containers/loginContainer';
-import { News } from 'components/news'
+import { News } from 'components/news';
+import { profileRedux } from 'containers/profileContainer'
 
 export const routes = [
   
@@ -18,5 +19,10 @@ export const routes = [
     path: '/news',
     exact: true,
     component: News
+  },
+  {
+    path: '/profile',
+    exact: true,
+    component: profileRedux
   }
 ]

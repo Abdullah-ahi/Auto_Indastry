@@ -6,9 +6,8 @@ class BaseContainer extends PureComponent {
 
   render(){
     const { loginData } = this.props
-    console.log(loginData);
     return(
-      <Head />
+      <Head Login={loginData}/>
     )
   }
 }

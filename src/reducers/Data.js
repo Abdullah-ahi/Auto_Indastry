@@ -1,6 +1,6 @@
 import { handleActions } from 'redux-actions';
 import { Map, fromJS } from 'immutable'
-import { signIn } from 'actions'
+import { signIn, addTel } from 'actions'
 
 const initialState = new Map({
   entries: new Map({
@@ -11,7 +11,7 @@ const initialState = new Map({
 
 export const dataReducer = handleActions({
   [signIn]: (state, action) => {
-    return state.setIn(['entries', 'profile'], fromJS(action.payload))
-  }
+    return state.mergeIn(['entries', 'profile'], fromJS(action.payload))
+  },
 
 }, initialState)
