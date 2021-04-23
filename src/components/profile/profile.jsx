@@ -4,8 +4,7 @@ import './profile.css';
 import { Input } from '@material-ui/core';
 import { Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
+import { Header } from 'components/Header'
 
 import classNames from 'classnames'
 export class Profile extends Component {
@@ -15,13 +14,13 @@ export class Profile extends Component {
   }
 
   handleAddTel = () => {
-    const { SignIn, Login } = this.props
+    const { SignIn } = this.props
     const { tel } = this.state
     if (this.checkTel(tel)){
       if (document.querySelector('.format-error')){
         document.querySelector('.format-error').remove()
       }
-      SignIn(this.state)
+      SignIn({tel})
       this.setState({
         InputIsVisible: false,
       })
@@ -77,28 +76,7 @@ export class Profile extends Component {
     })
     return(
       <div>
-        <header>
-          <AppBar position="static" className="MY CLASS">
-            <Toolbar className="nav">
-              <div className="nav-elems">
-                <Link to='/' className="nav-link">
-                  <Button className="nav-link-btn" variant="outlined">Head</Button>
-                </Link>
-                <Link to='/news' className="nav-link">
-                  <Button className="nav-link-btn" variant="outlined">News</Button>
-                </Link>
-              </div>
-              {Login.login ? 
-              <Link to='/profile' className="log-in-link">
-                <Button className="log-in-link-btn" variant="outlined" color="inherit">Profile</Button>
-              </Link> :
-              <Link to='/login' className="log-in-link">
-                <Button className="log-in-link-btn" variant="outlined" color="inherit">LOG IN</Button>
-              </Link>
-              }
-            </Toolbar>
-          </AppBar>
-        </header>
+        <Header Login={Login}/>
         <div className="profile-info-container">
           {Login.login 
           ? 
@@ -106,7 +84,7 @@ export class Profile extends Component {
             <h1>{Login.login}</h1>
             <h2 className="login-tel">{Login.tel}</h2>
             <Button onClick={this.showInput} className="show-input-btn" variant="outlined" color="inherit">{Login.tel ? 'Изменить телефон' : 'Добавить телефон'}</Button>
-            <Input name="tel" onChange={this.handleInputChange} type="tel" placeholder="+7-999-826-3596" variant="outlined" multiline={false}  className={inputClasses}></Input>
+            <Input name="tel" onChange={this.handleInputChange} type="tel" placeholder="+7-000-000-0000" variant="outlined" multiline={false}  className={inputClasses}></Input>
             <Button onClick={this.handleAddTel} className={BtnClasses} variant="outlined" color="inherit">Добавить</Button>
           </div> 
           :

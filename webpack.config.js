@@ -38,16 +38,21 @@ module.exports = {
         test: /\.(gltf)$/,
           use: [
             {
-              loader: "gltf-webpack-loader"
+              loader: "gltf-webpack-loader",
+              options: {
+                outputPath: 'gltfs'
+              }
             }
           ]
       },
       {
-        test: /\.(bin)$/,
+        test: /\.(bin)|\.png|\.jpg$/,
         use: [
           {
             loader: 'file-loader',
-            options: {}
+            options: {
+              outputPath: 'bins'
+            }
           }
         ]
       }

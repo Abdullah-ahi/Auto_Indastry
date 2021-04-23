@@ -8,13 +8,13 @@ body{
   opacity: 0.9;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  position: relative;
 }
 .text-input {
   background-color: rgba(104, 101, 101, 0.8);
   display: block !important;
-  width: 21%;
+  width: 100%;
 }
 .text-input div {
   width: 100%;
@@ -33,12 +33,32 @@ body{
   margin-bottom: 3px !important;
 }
 .login-link{
-  width: 21%;
+  width: 100%;
   text-decoration: none;
 }
 .login-btn{
   width: 100%;
 }
-.format-error{
+.error{
   color: red;
+  max-width: 100%;
+}
+.login-attempts-count {
+  color: #fff;
+  font-size: 32px;
+  position: absolute;
+  top: 15%;
+}
+.form-wrapper {
+  width: 445px;
+  height: 36%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  z-index: 2;
+  position: absolute;
+  background-color: rgb(0, 0, 0);
+  top: 30%;
+  padding-bottom: 135px;
 }
