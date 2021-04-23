@@ -1,3 +1,3 @@
 # TestEx
-1) Установите 'node_modules' командой 'npm i'
-2) Выполните в терминале команду 'npm run dev' для запуска проекта. После запуска в терминале выведется порт, на котором проект запущен
+<code>npm run build</code> to build
+<code>npm run dev</code> to run project
