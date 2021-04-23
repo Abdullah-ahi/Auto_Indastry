@@ -14,22 +14,6 @@
   text-align: center;
   color: #fff;
 }
-.log-out-message{
-  color: #fff;
-}
-.log-out-block{
-  text-align: center;
-}
-.log-out-block-link{
-  text-decoration: none;
-}
-.log-out-block-btn:hover{
-  background-color: #fff !important;
-  color: #000000;
-}
-.log-out-block-btn{
-  margin: 0 auto !important;
-}
 .tel{
   width: 36%;
   margin: 0 auto 10px;

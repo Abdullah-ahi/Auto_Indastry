@@ -47,7 +47,6 @@ export class Head extends Component {
     });
     function animate(){
       requestAnimationFrame(animate);
-
       if (obj){
         obj.scene.rotation.y -= 0.003;
       }
@@ -73,9 +72,7 @@ export class Head extends Component {
     return(
       <div>
         <Header Login={Login}/>
-        <main>
-          
-        </main>
+        <main></main>
       </div>
     )
   }

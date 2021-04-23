@@ -3,8 +3,8 @@ import './profile.css';
 
 import { Input } from '@material-ui/core';
 import { Button } from '@material-ui/core';
-import { Link } from 'react-router-dom';
-import { Header } from 'components/Header'
+import { Header } from 'components/Header';
+import { LogOutBlock } from 'components/LogOutBlock'
 
 import classNames from 'classnames'
 export class Profile extends Component {
@@ -17,50 +17,40 @@ export class Profile extends Component {
     const { SignIn } = this.props
     const { tel } = this.state
     if (this.checkTel(tel)){
-      if (document.querySelector('.format-error')){
-        document.querySelector('.format-error').remove()
-      }
+      this.removeErrors()
       SignIn({tel})
       this.setState({
         InputIsVisible: false,
       })
     }else{
-      this.showTelError()
+      this.renderTelError()
     }
   }
-  showTelError = () => {
-    if (document.querySelector('.format-error')){
-      document.querySelector('.format-error').remove()
-    }
-    const error = document.createElement('div')
-    error.classList.add('format-error')
-    error.textContent = 'Телефон должен быть введен в формате +7-000-000-0000'
-    document.querySelector('.profile-info').append(error)
+  renderTelError = () => {
+    this.removeErrors()
+    const error = `<small class="error">Телефон должен быть введен в формате +7-000-000-0000</small>`
+    document.querySelector('.profile-info').insertAdjacentHTML('beforeend', error)
   }
+  removeErrors = () => {
+    const errors = Array.from(document.querySelectorAll('.error'))
+    errors && errors.forEach(error => error.remove())
+  }
+
   handleInputChange = (event) => {
     const fieldName = event.target.name
-
     this.setState({
       [fieldName]: event.target.value
     })
   }
   showInput = () => {
     const { InputIsVisible } = this.state
-    if (document.querySelector('.format-error')){
-      document.querySelector('.format-error').remove()
-    }
+    this.removeErrors()
     this.setState({
       InputIsVisible: !InputIsVisible
     })
   }
   checkTel(tel){
-    let result;
-    if (tel.match(/\+7[\-]\d{3}[\-]\d{3}[\-]\d{4}/) === null){
-      result = false;
-    }else{
-      result = tel === tel.match(/\+7[\-]\d{3}[\-]\d{3}[\-]\d{4}/).join('');
-    }
-    return result;
+    return /\+7[\-]\d{3}[\-]\d{3}[\-]\d{4}/.test(tel)
   }
   render(){
     const { Login } = this.props
@@ -88,12 +78,7 @@ export class Profile extends Component {
             <Button onClick={this.handleAddTel} className={BtnClasses} variant="outlined" color="inherit">Добавить</Button>
           </div> 
           :
-          <div className="log-out-block">
-            <h3 className="log-out-message">Авторизуйтесь, чтобы получить доступ к данному разделу</h3>
-            <Link to='/login' className="log-out-block-link">
-              <Button className="log-out-block-btn" variant="outlined" color="inherit">LOG IN</Button>
-            </Link>
-          </div>
+          <LogOutBlock/>
           }
         </div>
       </div>
